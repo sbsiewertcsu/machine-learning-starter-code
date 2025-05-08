@@ -105,7 +105,8 @@ print('\n model tested!')
 #
 import tempfile
 
-MODEL_DIR = tempfile.gettempdir()
+#MODEL_DIR = tempfile.gettempdir()
+MODEL_DIR = './'
 export_path = os.path.join(MODEL_DIR, 'basic.keras')
 print('export_path = {}\n'.format(export_path))
 
@@ -116,7 +117,8 @@ tf.keras.models.save_model(
     include_optimizer=True
 )
 
-print('\nSaved model as /tmp/basic.keras')
+print('\nSaved model as ./basic.keras')
+#print('\nSaved model as /tmp/basic.keras')
 
 ################################# Now you can serve this saved model as documented in reference
 #
@@ -124,6 +126,7 @@ print('\nSaved model as /tmp/basic.keras')
 #
 # https://keras.io/2.16/api/models/model_saving_apis/model_saving_and_loading/
 #
-loaded_model = tf.keras.models.load_model("/tmp/basic.keras")
+#loaded_model = tf.keras.models.load_model("/tmp/basic.keras")
+loaded_model = tf.keras.models.load_model("./basic.keras")
 
 print('\nSaved model has been reloaded')
