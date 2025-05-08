@@ -20,11 +20,16 @@ import sys
 # Confirm that we're using Python 3
 assert sys.version_info.major == 3, 'Oops, not running Python 3. Use Runtime > Change runtime type'
 
-# TensorFlow and tf.keras
-print("Installing dependencies for Colab environment")
-
 import tensorflow as tf
 from tensorflow import keras
+
+print("Avoid memory hogging")
+gpu_devices = tf.config.experimental.list_physical_devices('GPU')
+for gpu in gpu_devices:
+    tf.config.experimental.set_memory_growth(gpu, True)
+
+# TensorFlow and tf.keras
+print("Installing dependencies for Colab environment")
 
 # Helper libraries
 import numpy as np
