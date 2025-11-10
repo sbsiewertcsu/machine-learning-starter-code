@@ -7,8 +7,6 @@
 #pip3 install grpcio
 #pip3 install matplotlib
 #pip3 install tensorrt
-#pip3 install nvidia-pyindex
-#pip3 install nvidia-cudnn
 #
 # Adapted by Sam Siewert, 1/16/2025
 #
