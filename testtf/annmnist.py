@@ -33,6 +33,12 @@ X_train, y_train = X_train_full[:-5000], y_train_full[:-5000]
 X_valid, y_valid = X_train_full[-5000:], y_train_full[-5000:]
 
 
+# Fix 1
+X_train = X_train.astype("float32") / 255.0
+X_valid = X_valid.astype("float32") / 255.0
+X_test = X_test.astype("float32") / 255.0
+
+
 plt.imshow(X_train[0], cmap="binary")
 plt.axis('off')
 plt.show()
@@ -71,6 +77,8 @@ model.summary()
 # You must install graphviz (see instructions at https://graphviz.gitlab.io/download/) for `plot_model` to work.
 # tf.keras.utils.plot_model(model, "my_fashion_mnist_model.png", show_shapes=True)
 
+# Fix 2
+optimizer=tf.keras.optimizers.SGD(learning_rate=0.01, momentum=0.9)
 
 model.compile(loss="sparse_categorical_crossentropy",
               optimizer="sgd",
