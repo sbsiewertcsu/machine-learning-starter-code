@@ -9,6 +9,13 @@ import tensorflow as tf
 import pandas as pd
 from pathlib import Path
 
+
+print("Avoid memory hogging")
+gpu_devices = tf.config.experimental.list_physical_devices('GPU')
+for gpu in gpu_devices:
+    tf.config.experimental.set_memory_growth(gpu, True)
+
+
 IMAGES_PATH = Path() / "images" / "ann"
 IMAGES_PATH.mkdir(parents=True, exist_ok=True)
 

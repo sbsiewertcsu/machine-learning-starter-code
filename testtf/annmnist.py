@@ -7,6 +7,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 
+print("Avoid memory hogging")
+gpu_devices = tf.config.experimental.list_physical_devices('GPU')
+for gpu in gpu_devices:
+    tf.config.experimental.set_memory_growth(gpu, True)
+
+
 # helper function
 from pathlib import Path
 
@@ -41,7 +47,7 @@ X_test = X_test.astype("float32") / 255.0
 
 plt.imshow(X_train[0], cmap="binary")
 plt.axis('off')
-plt.show()
+#plt.show()
 
 class_names = ["T-shirt/top", "Trouser", "Pullover", "Dress", "Coat",
                "Sandal", "Shirt", "Sneaker", "Bag", "Ankle boot"]
@@ -61,7 +67,7 @@ for row in range(n_rows):
 plt.subplots_adjust(wspace=0.2, hspace=0.5)
 
 save_fig("fashion_mnist_plot")
-plt.show()
+#plt.show()
 
 
 tf.random.set_seed(42)

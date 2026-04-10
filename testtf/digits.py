@@ -2,6 +2,12 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.datasets import mnist
 
+print("Avoid memory hogging")
+gpu_devices = tf.config.experimental.list_physical_devices('GPU')
+for gpu in gpu_devices:
+    tf.config.experimental.set_memory_growth(gpu, True)
+
+
 # Load MNIST data
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
